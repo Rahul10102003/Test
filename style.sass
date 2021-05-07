@@ -1,0 +1,191 @@
+$bg-1: #FFCDD2
+$bg-2: #B2EBF2
+$music-bar: #2196F3
+$music-bar-bg: #efefef
+  
+%player-action
+  transition: 300ms
+  &:hover
+    opacity: 0.7
+    cursor: pointer
+
+div
+  box-sizing: border-box
+
+img
+  width: 100%
+  height: 100%
+
+p 
+  margin-top: 0
+  margin-bottom: 0.3em
+
+body
+  font-family: 'Mukta', sans-serif
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  min-width: 100vw
+  min-height: 100vh
+  background: linear-gradient(-45deg, $bg-1 50%, $bg-2 50%)
+
+//for all buttons
+div > img
+  @extend %player-action
+
+div,
+section
+  box-sizing: border-box
+
+.c-containter
+  display: flex
+  flex-flow: column wrap
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100vh
+  padding: 1em
+
+.music-container
+  position: relative
+  display: flex
+  box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.3)
+  max-height: 290px
+
+.album-cover
+  flex: 1 0 30%
+  img
+    width: 100%
+    height: 100%
+
+.arrow
+  position: absolute
+  top: calc(50% - 2.5em)
+  background: rgba(255,255,255,0.3)
+  border: 0
+  width: 5em
+  height: 5em
+  cursor: pointer
+  &:hover
+    background: rgba(255,255,255,0.5)
+  img
+    display: block
+    width: 20px
+    margin: 0 auto
+  &.left
+    left: -5em
+  &.right
+    right: -5em
+
+.music-player
+  display: flex
+  flex-flow: column wrap
+  justify-content: center
+  background: white
+  padding: 1em
+  text-align: center
+  width: 500px
+  max-width: 500px
+  &__title
+    margin: 0 0 0.1em 0
+  &__author
+    margin: 0 0 0.5em 0
+
+.music-bar 
+  background: $music-bar-bg
+  stroke-width: 1
+  height: 8px
+  width: 100%
+  &:hover
+    cursor: pointer
+  #length
+    width: 0%
+    background: $music-bar
+    height: 100%
+    transition: width linear 200ms
+
+.music-time
+  display: flex
+  flex-flow: row wrap
+  &__last
+    margin-left: auto
+
+.music-order
+  display: flex
+  flex-flow: row wrap
+  &__shuffle,
+  &__loop
+    width: 1.2em
+    height: 1.2em
+    opacity: 0.2
+    margin: 0.3em 0
+    &.is-loop
+      opacity: 1 !important
+    &.is-loop-one
+      opacity: 1 !important
+  &__shuffle
+    margin-left: auto
+
+.music-control
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+  align-items: center
+  height: 2em
+  &__play
+    width: 3em
+    height: 3em
+    margin: 0 1em
+  &__backward,
+  &__forward
+    width: 1.5em
+    height: 1.5em
+
+.disclaimer
+  font-size: 0.9em
+  margin-top: 1em
+  text-align: center
+  a 
+    color: $music-bar
+
+@media all and (max-width: 960px)
+  .c-containter
+    display: block
+    overflow: auto
+
+  .music-container
+    flex-flow: column wrap
+    max-height: inherit
+    max-width: 270px
+    margin: 0 auto
+    overflow: auto
+
+  .music-player
+    width: 100%
+    max-width: 100%
+    &__title
+      font-size: 1.5em
+    &__author
+      font-size: 1em
+
+  .album-cover
+    position: relative
+    flex: 1 1 100%
+    max-width: 270px
+    max-height: 270px
+
+  .arrow
+    position: absolute
+    top: calc(50% - 1.5em)
+    width: 3em
+    height: 3em
+    &.left
+      left: 0
+    &.right
+      right: 0
+
+  .music-control
+    &__play
+      width: 2.2em
+      height: 2.2em
